@@ -1,0 +1,40 @@
+.box {
+    box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #f9f9f9;
+    height: 535px;
+}
+
+.pie_box {
+    box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #f9f9f9;
+    height: 435px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.count-box {
+    align-items: center;
+    padding: 30px;
+    width: 100%;
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #f9f9f9;
+}
+
+.user_Info {
+    justify-content: center !important;
+    width: 100%;
+}
+
+p {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.buttons {
+    text-align: end;
+}
+
+.btn {
+    font-weight: 500;
+}

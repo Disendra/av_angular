@@ -1,0 +1,78 @@
+<!-- ======= Counts Section ======= -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div *ngIf="cards">
+  <section id="counts" class="counts">
+    <div class="container" data-aos="fade-up">
+  
+      <div class="row gy-4">
+  
+       <!---Newly Added-->
+       
+       <div class="col-lg-3 col-md-4" (click)="onClick('isCard')">
+        <div class="count-box">
+            <div style="text-align: center;">
+                <img src="assets/img/av-profile/id-card.png" class="img-fluid custom-images" alt="">
+                <p class="tool-header">Bussiness Card</p>
+                <p>Design a personalized E-Business card and connect with your network in a flash.</p>
+            </div>
+        </div>
+    </div>
+    
+       
+       
+             
+       
+        <div class="col-lg-3 col-md-4" (click)="onClick('btu')">
+          <div class="count-box">
+            <div style="text-align: center;">
+            <img src="assets/img/av-profile/british-thermal-unit.png" class="img-fluid custom-images" alt="">
+              <p class="tool-header">BTU Calculator</p>
+              <p>Calculate how much heat is generated and released by a piece of electronic equipment.</p>
+            </div>
+          </div>
+       </div>
+
+
+         <!-- <div class="col-lg-3 col-md-4" (click)="onClick('quatation')">
+          <div class="count-box">
+            <img src="assets/img/si-count.png" class="img-fluid" alt="">
+            <div style="text-align: center;">
+              <p style="font-weight: 500; font-size: 18px; margin-top: 10px;">Quatation</p>
+              <p>Calculate how much heat is generated and released by a piece of electronic equipment.</p>
+            </div>
+          </div>
+        </div> -->
+
+        </div>
+
+      </div>
+
+  </section><!-- End Counts Section -->
+</div>
+  <!-- <div *ngIf="isSimulator">
+    <app-av-simulator></app-av-simulator>
+  </div> -->
+  
+  <div class="arrow-icon" (click)="onClick('cards')" *ngIf="!cards">
+    <mat-icon>arrow_back</mat-icon>
+  </div>
+
+<div *ngIf="isSimulator">
+  <app-av-simulator></app-av-simulator>
+</div>
+
+<div *ngIf="isBtuCalculator || isBussinessCard">
+  <app-btu-calculator [toolType]="toolType"></app-btu-calculator>
+</div>
+</body>
+</html>

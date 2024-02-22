@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+</head>
+
+<body>
+
+<div class="header-boxs" *ngIf="showMails">
+     <div class="row">
+      <div class="col-md-12">
+        <div class="grid email">
+          <div class="grid-body">
+            <div class="row">
+              <div class="col-md-12">
+
+                 <div class="filters">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      Action <span class="caret"></span>
+                    </button>
+
+                    <div class="input-group">
+                      <input type="text" class="form-control input-sm" placeholder="Search">
+                      <span class="input-group-btn">
+                     <button type="submit" name="search" class="btn_ btn-primary btn-sm search"><i class="fa fa-search"></i></button></span>
+                    </div>		
+                </div>
+
+                <div class="table-responsive mt-4">
+                  <table class="table">
+                    <tbody>
+                      <tr *ngFor="let email of emails" (click)="selectEmail(email)">
+                        <td class="action"><input type="checkbox" /></td>
+                        <td class="action"><i class="fa fa-star-o"></i></td>
+                        <td class="action"><i class="fa fa-bookmark-o"></i></td>
+                        <td class="name"><a>{{ email.sender }}</a></td>
+                        <td class="subject"><a>{{ email.title }}</a></td>
+                        <td class="time">{{ email.createdDate | date:'hh:mm a' }} {{ email.createdDate | date:'MMM dd' }}</td>
+                      </tr>
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+  <div *ngIf="selectedEmail">
+    <div class="arrow-Icon" (click)="onBack()">
+      <mat-icon>arrow_back</mat-icon>
+  </div>  
+  <div class="container-fluid center-content mt-10">
+    <div class="clciked_Notification">
+        <div style="border: 1px solid #00000038;">
+            <div *ngFor="let email of clickedemails">
+                <header>
+                    <h1>{{ email.title }}</h1>
+                </header>
+                <div class="description">
+                    <p>{{ email.description }}</p>
+                    <p>Source:</p>
+                    <p><a class="links" href="{{ email.link }}" target="_blank">{{ email.link }}</a></p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="sponsor-logos">
+                <img class="sponsor-logo" src="assets/img/clients/client-1.png" alt="Sponsor Logo 1">
+                <img class="sponsor-logo" src="assets/img/clients/client-2.png" alt="Sponsor Logo 2">
+                <img class="sponsor-logo" src="assets/img/clients/client-3.png" alt="Sponsor Logo 3">
+                <img class="sponsor-logo" src="assets/img/clients/client-4.png" alt="Sponsor Logo 4">
+            </div>
+        </footer>
+    </div>
+</div>
+ </div>
+ 
+</body>
+</html>
+
+
+
+  

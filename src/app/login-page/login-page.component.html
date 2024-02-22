@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup Form</title>
+</head>
+<body>
+<div class="wrapper">
+	<div class="title-text">
+	  <div class="title login">Login Form</div>
+	  <div class="title signup">Signup Form</div>
+	</div>
+	<div class="form-container">
+	  <div class="slide-controls">
+		<input type="radio" name="slide" id="login" checked>
+		<input type="radio" name="slide" id="signup">
+		<label for="login" (click)="onLoginClick()" class="slide login">Login</label>
+		<label for="signup" (click)="onSignupClick()" class="slide signup">Signup</label>
+		<div class="slider-tab"></div>
+	  </div>
+	  <div class="form-inner">
+		<form action="#" class="login" *ngIf="isLogin">
+		  <div class="field">
+			<input type="text" placeholder="Email Address" name="emailId" [(ngModel)]="emailId" required>
+		  </div>
+		  <div class="field">
+			<input type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
+		  </div>
+		  <div class="pass-link"><a href="#">Forgot password?</a></div>
+		  <div class="field btn">
+			<div class="btn-layer"></div>
+			<input type="submit" (click)="onSubmit(emailId,password)" value="Login">
+		  </div>
+		  <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+		</form>
+		<form action="#" class="signup" *ngIf="isSignup">
+		  <div class="field">
+			<input type="text" placeholder="Email Address" name="emailId" [(ngModel)]="emailId" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com$">
+		  </div>
+		  <div class="field">
+			<input type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
+		  </div>
+		  <div class="field">
+			<input type="password" placeholder="Confirm password" name="reEnteredPswd" [(ngModel)]="reEnteredPswd" required>
+		  </div>
+		  
+		  <div class="field">
+			<select id="dropdownField" name="role" [(ngModel)]="role" required>
+			  <option value="default" disabled selected>Select Role</option>
+			  <option value="AvEngineer" class="options">AV Engineers</option>
+			  <option value="systemIntegrator" class="options">System Integrator</option>
+			  <option value="oem" class="options">OEM</option>
+			  <option value="client" class="options">Client</option>
+			  <option value="consultants" class="options">Consultants</option>
+			  <option value="distributor" class="options">Distributor</option>
+			</select>
+		  </div>
+            <p class="invalid_msg">{{ invalidMsg }}</p>
+		  <div class="field btn">
+			<div class="btn-layer"></div>
+			<input type="submit" (click)="onSignUp(emailId,password,role, reEnteredPswd)" value="Signup">
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </div>
+  
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+  </body>
+</html>

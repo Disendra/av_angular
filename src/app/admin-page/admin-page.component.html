@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+
+
+  <div class="chart-container">
+    <div class="pie_box">
+      <h1>Profiles Information</h1>
+    <canvas id="myChart"></canvas>
+  </div>
+  </div>
+  
+
+  
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-md-6 box">
+            <h2 class="mb-2">Insert the Feed</h2>
+            <form>
+              <div class="form-group">
+                <label for="sender">Sender:</label>
+                <input type="text" class="form-control" id="sender" name="sender" required [(ngModel)]="sender">
+              </div>
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required [(ngModel)]="title">
+              </div>
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-control" id="description" name="description" rows="5" required [(ngModel)]="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="link">Link:</label>
+                <input type="text" class="form-control" id="link" name="link" required [(ngModel)]="link">
+              </div>
+              
+              <div class="buttons">
+              <button type="submit" (click)="onClear()" class="btn btn-primary">Cancel</button>          
+              <button type="submit" (click)="onSubmit(sender,title,description,link)" class="btn btn-success">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text mt-4">
+        <h2>User Information</h2>
+      </div>
+
+      
+      <div class="row gy-4 user_Info">
+        <div *ngFor="let item of items" class="col-lg-3 col-md-4">
+          <div class="count-box">
+            <div style="text-align: center;">
+              <img src="assets/img/download.png" (click)="downloadData(item.dataKey)" class="img-fluid custom-images" alt="">
+              <p class="tool-header">{{ item.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+       <br>
+
+    <app-spinner *ngIf="showSpinner"></app-spinner>
+    
+</body>
+</html>
