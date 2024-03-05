@@ -1,6 +1,8 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
 import { Router } from '@angular/router'
+import { AuthServiceService } from 'src/app/services/auth-service.service'
+import { PopupService } from 'src/app/services/popup.service'
 
 @Component({
   selector: 'app-av-header',
@@ -8,23 +10,28 @@ import { Router } from '@angular/router'
   styleUrls: ['./av-header.component.css']
 })
 export class AvHeaderComponent {
-  @ViewChild('myDialog') myDialog!: TemplateRef<any>
   panelOpenState = false
   isKnowledgeBaseExpanded: boolean = false
   isSimultor: boolean = false
-  isAbout: boolean = true
+  isAbout: boolean = true;
   isProfile: boolean = false;
   isFeed : boolean = false;
+  dialogRef: any;
+  isDialogOpen: boolean = false;
   isCommunity : boolean = false;
   isDirectory: boolean = false;
   isKnowledge: boolean = false;
   userName : string = 'Disendra';
   activeMenuItem: any;
+  CickedsocialMedia : any;
   showChatbot : boolean = false;
   showChatbotIcon : boolean = true;
+  profileWeight: number = 85;
+  @ViewChild('myDialog') myDialog!: TemplateRef<any>
 
-  constructor(private router: Router,private dialog: MatDialog) { }
-
+  constructor(private router: Router,private dialog: MatDialog,private authService : AuthServiceService, private popup:PopupService) { 
+    console.log(authService.getLoggedInEmail());
+  }
 
   onClick (type: any) {
     this.activeMenuItem = type
@@ -38,6 +45,7 @@ export class AvHeaderComponent {
   }
 
 logOut() {
+  this.authService.clearLoggedInEmail();
   this.router.navigate(['/home-page']);
 }
 
@@ -49,19 +57,14 @@ logOut() {
     this.isKnowledgeBaseExpanded = false
   }
 
-  // constructor (private dialog: MatDialog) {}
-
-  openDialogWithTemplateRef (templateRef: TemplateRef<any>) {
-    if (templateRef) {
-      this.dialog.open(templateRef)
-    } else {
-      console.error('TemplateRef is undefined')
+  shareOnSocialMedia(media: string) {
+    // this.CickedsocialMedia = media;
+    if (!this.isDialogOpen) {
+      this.CickedsocialMedia = media;
+      this.popup.openDialogWithTemplateRef(this.myDialog);
     }
   }
 
-  shareOnSocialMedia (links: any) {
-    this.openDialogWithTemplateRef(this.myDialog)
-  }
 
 // ChatBot
 toggleChatbot () {

@@ -144,6 +144,10 @@ input[type="radio"] {
   border: none;
 }
 
+.signup_field {
+  margin-top: 10px!important;
+}
+
 .form-inner form .field input {
   height: 100%;
   width: 100%;
@@ -247,6 +251,41 @@ select {
 
 .invalid_msg {
   position: absolute;
-    margin-left: 5px;
-    color: red;
+  margin-left: 5px;
+  color: red;
+}
+
+
+.cancel_Icon {
+  border: 2px solid red;
+  border-radius: 15%;
+  display: inline-block;
+  padding: 5px;
+}
+
+.cancel_Icon i {
+  color: red;
+  /* Set the color of the icon */
+}
+
+.error_headline {
+  font-weight: 600;
+  font-size: 18px;
+  color: black;
+  margin-left: 5px;
+}
+
+.error_message {
+  display: block;
+  padding: 10px;
+  margin-top: -18px;
+  font-size: 16px;
+  color: black;
+}
+
+.retry_Button {
+  border: none;
+  color: white;
+  height: 35px;
+  background: orange;
 }

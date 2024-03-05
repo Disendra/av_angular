@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class ClientsComponent {
 
+  clientImages: string[] = [
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png',
+    'assets/img/home-page/coming-soon.png'
+  ];
+
 }

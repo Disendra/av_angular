@@ -61,9 +61,9 @@
 
 
    <div class="buttons mt-3">
-  <button class="btn success" (click)="downloadCard('btuCalculator')">Save</button>
   <button class="btn warning" (click)="refreshValues()">Cancel</button>
-  <button class="btn info" (click)="print()">Print</button>
+  <button class="btn success" (click)="downloadBtu()">Save</button>
+  <!-- <button class="btn info" (click)="print()">Print</button> -->
 </div>
 
 
@@ -120,41 +120,39 @@
 <!-- <button class="btn success" (click)="downloadCard('bussinessCard')">Download</button>
 <button class="btn info" (click)="shareOnSocialMedia ()">Share</button> -->
 <a (click)="shareOnSocialMedia()" class="fa fa-share-alt"></a>
-<a (click)="downloadCard('bussinessCard')" class="fa fa-download"></a>
+<a (click)="downloadCard()" class="fa fa-download"></a>
 </div>
 
 <ng-template #myDialog>
-  <h4 matDialogTitle>Share</h4>
+  <!-- <h4 matDialogTitle>Share</h4> -->
 
   <!-- Include Angular Material icons in your component's template -->
-  <div class="d-flex align-items-center justify-content-center social-Icons">
+  <!-- <div class="d-flex align-items-center justify-content-center social-Icons">
     <a href="#" class="fa fa-whatsapp"></a>
     <a href="#" class="fa fa-telegram"></a>
-  </div>
+  </div> -->
 
   <mat-dialog-content>
-    <div class="d-flex align-items-center">
+    <!-- <div class="d-flex align-items-center">
       <hr>
       <h6 class="pageLink-header" matDialogTitle>Page Link</h6>
-    </div>
+    </div> -->
+    <mat-icon class="cancel_Icon" (click)="closePopup()">cancel_presentation</mat-icon>
     <div class="form-group">
       <mat-form-field style="width: 400px;">
         <input matInput [(ngModel)]="urlLink" placeholder="Add Profile URL*">
-        <button mat-icon-button matSuffix (click)="copyToClipboard()">
+        <button mat-icon-button matSuffix (click)="copyToClipboard()" matTooltip="copyLink">
           <mat-icon>content_copy</mat-icon>
         </button>
-      </mat-form-field>
-      
+      </mat-form-field>      
       <!-- Display the message when link is copied -->
-      <div *ngIf="linkCopied">Link copied!</div>
-      
+      <div *ngIf="linkCopied">Link copied!</div>      
     </div>
   </mat-dialog-content>
-
-  <mat-dialog-actions class="dialog-buttons" align="end">
+  <!-- <mat-dialog-actions class="dialog-buttons" align="end">
     <button mat-button mat-dialog-close class="btn warning">Cancel</button>
     <button mat-button [mat-dialog-close]="true" class="btn success">Save</button>
-  </mat-dialog-actions>
+  </mat-dialog-actions> -->
 </ng-template>
 
 

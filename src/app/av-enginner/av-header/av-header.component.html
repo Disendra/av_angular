@@ -15,16 +15,23 @@
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="d-flex flex-column">
-
       <div class="profile">
         <i class="bi-box-arrow-right logout-Icon" (click)="logOut()"></i>
-        <img src="assets/img/disendra-Img.png" alt="" class="img-fluid rounded-circle">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+              <img src="assets/img/disendra-Img.png" alt="" class="img-fluid rounded-circle">
+              <button class="profile_Weight" [ngClass]="{'red': profileWeight <= 40, 'blue': profileWeight > 40 && profileWeight <= 80, 'green': profileWeight > 80}">{{ profileWeight }}%</button>
+            </div>
+          </div>        
+        </div>
+        
         <h1 class="text-light">{{userName}}</h1>
         <div class="social-links mt-3 text-center">
-          <a (click)="shareOnSocialMedia('twitter')" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a (click)="shareOnSocialMedia('facebook')" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a (click)="shareOnSocialMedia('instagram')" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a (click)="shareOnSocialMedia('linkedin')" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <a (click)="shareOnSocialMedia('Twitter')" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a (click)="shareOnSocialMedia('Facebook')" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a (click)="shareOnSocialMedia('Instagram')" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a (click)="shareOnSocialMedia('Linkedin')" class="linkedin"><i class="bi bi-linkedin"></i></a>
           <a (click)="onClick('profile')" class="edit"><i class="bi bi-pencil"></i></a>
         </div>
       </div>
@@ -39,10 +46,10 @@
         </ul>
       </nav><!-- .nav-menu -->
        </div>
-       <p class="version-tag">version1.0.0</p>
+       <p class="version-tag">v1.0.0</p>
   </header><!-- End Header -->
 
-  <div *ngIf="isKnowledge">
+  <div *ngIf="isKnowledge"> 
     <!-- <app-av-simulator></app-av-simulator> -->
     <!-- <app-av-calculator></app-av-calculator> -->
     <app-av-calculator></app-av-calculator>
@@ -75,7 +82,7 @@
     <mat-dialog-content class="d-flex align-items-center justify-content-center">
       <div class="form-group">
         <mat-form-field style="width: 400px;">
-          <input matInput placeholder="Add Profile URL*" />
+          <input matInput [placeholder]="'Add ' + CickedsocialMedia + ' URL*'" />
         </mat-form-field>
       </div>
     </mat-dialog-content>
@@ -84,13 +91,6 @@
       <button [mat-dialog-close]="true" class="btn success">Save</button>
     </mat-dialog-actions>
   </ng-template>
-
-
-  <!-- <div class="buttons">
-    <button class="btn success" (click)="downloadCard('btuCalculator')">Save</button>
-    <button class="btn warning" (click)="refreshValues()">Cancel</button>
-    <button class="btn info" (click)="print()">Print</button>
-  </div> -->
 
 <!-- ChatBot -->
 <div class="container chatbot d-flex justify-content-center">
@@ -128,9 +128,6 @@
       </div>
   </div>
 </div>
-
-
-
 
 </body>
 </html>

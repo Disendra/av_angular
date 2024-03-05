@@ -8,6 +8,10 @@
     margin-left: 74px;
   }
 
-
+  ul li::marker {
+    content: '✓';
+    font-size: 22px;
+    color: blue;
+  }
 
   

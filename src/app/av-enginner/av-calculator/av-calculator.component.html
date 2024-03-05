@@ -15,9 +15,6 @@
     <div class="container" data-aos="fade-up">
   
       <div class="row gy-4">
-  
-       <!---Newly Added-->
-       
        <div class="col-lg-3 col-md-4" (click)="onClick('isCard')">
         <div class="count-box">
             <div style="text-align: center;">
@@ -27,11 +24,6 @@
             </div>
         </div>
     </div>
-    
-       
-       
-             
-       
         <div class="col-lg-3 col-md-4" (click)="onClick('btu')">
           <div class="count-box">
             <div style="text-align: center;">
@@ -59,12 +51,11 @@
 
   </section><!-- End Counts Section -->
 </div>
-  <!-- <div *ngIf="isSimulator">
-    <app-av-simulator></app-av-simulator>
-  </div> -->
-  
-  <div class="arrow-icon" (click)="onClick('cards')" *ngIf="!cards">
-    <mat-icon>arrow_back</mat-icon>
+
+  <div class="arrow_Container">
+    <div class="arrow-Icon"  (click)="onClick('cards')" *ngIf="!cards">
+      <mat-icon>arrow_back</mat-icon>
+    </div>
   </div>
 
 <div *ngIf="isSimulator">

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Login and Signup Form</title>
 </head>
 <body>
@@ -35,17 +36,20 @@
 		  <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
 		</form>
 		<form action="#" class="signup" *ngIf="isSignup">
-		  <div class="field">
+		  <div class="field signup_field">
+				<input type="text" placeholder="User Name" name="password" [(ngModel)]="password" required>
+		  </div>
+		  <div class="field signup_field">
 			<input type="text" placeholder="Email Address" name="emailId" [(ngModel)]="emailId" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com$">
 		  </div>
-		  <div class="field">
+		  <div class="field signup_field">
 			<input type="password" placeholder="Password" name="password" [(ngModel)]="password" required>
 		  </div>
-		  <div class="field">
+		  <div class="field signup_field">
 			<input type="password" placeholder="Confirm password" name="reEnteredPswd" [(ngModel)]="reEnteredPswd" required>
 		  </div>
 		  
-		  <div class="field">
+		  <div class="field signup_field">
 			<select id="dropdownField" name="role" [(ngModel)]="role" required>
 			  <option value="default" disabled selected>Select Role</option>
 			  <option value="AvEngineer" class="options">AV Engineers</option>
@@ -65,6 +69,20 @@
 	  </div>
 	</div>
   </div>
+
+  <ng-template #myDialog>
+    <mat-dialog-content class="d-flex align-items-center justify-content-center">
+        <div class="cancel_Icon">
+            <i class="fa fa-close"></i>
+        </div>
+        <p class="error_headline">Login Failed</p>
+    </mat-dialog-content>
+    <p class="error_message">{{ errorMsg }}</p>
+    <mat-dialog-actions align="center" class="d-flex justify-content-center" style="margin-top: -20px;">
+        <button [mat-dialog-close]="true" class="btn btn-warning retry_Button">Retry</button>
+    </mat-dialog-actions>
+</ng-template>
+
   
     <app-spinner *ngIf="showSpinner"></app-spinner>
   </body>

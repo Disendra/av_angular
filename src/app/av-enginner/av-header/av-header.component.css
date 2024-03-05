@@ -83,11 +83,35 @@ h6 {
   overflow-y: auto;
 }
 
-#header .profile img {
-  margin: 15px auto;
-  display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
+.profile img {
+  width: 100%;
+  max-width: 120px;
+  border: 3px solid green;
+  margin-bottom: -15px;
+}
+
+/* Style for the profile weight button */
+.profile_Weight {
+  font-size: 12px;
+  color: white;
+  background: #4caf5085;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 26px;
+  /* margin-bottom: 0px; */
+  padding: 2px 7px;
+}
+
+.red {
+  background: red;
+}
+
+.blue {
+  background: blue;
+}
+
+.green {
+  background: green;
 }
 
 #header .profile h1 {
@@ -177,20 +201,25 @@ h6 {
 }
 
 .logout-Icon {
-  padding-left: 90%;
-  color: indianred;
+  color: white;
   font-size: 20px;
+  position: relative;
+  left: 90%;
+  top: 15px;
   cursor: pointer;
 }
 
 .version-tag {
   text-align: center;
-  /* padding-top: 13%; */
   color: #ffffff6b;
-  position: relative;
+  position: absolute;
   font-size: 13px;
-  top: 6%;
+  bottom: -11px;
+  /* Positioning at the bottom */
+  width: 92%;
+  /* Ensuring it spans the width of the header */
 }
+
 
 .nav-menu a,
 .nav-menu a:focus {
@@ -274,8 +303,6 @@ h6 {
 }
 
 
-
-
 a.twitter:hover {
   background-color: #55ACEE !important;
 }
@@ -299,7 +326,7 @@ a.edit:hover {
 /* ChatBot */
 .chatbot {
   position: fixed;
-  display: none!important;
+  display: none !important;
   /* left: 46%; */
   right: -28%;
   bottom: 0;

@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 strong {
     color: black;
 }
@@ -54,12 +61,52 @@ strong {
     color: white;
 }
 
-
-.arrow-Icon {
+/* .arrow-Icon {
     position: absolute;
     top: 7px;
     left: 23%;
     color: orange;
     cursor: pointer;
-  }
-  
+  } */
+
+.arrow_Container {
+    display: flex;
+    padding-left: 25%;
+}
+
+.arrow-Icon {
+    color: orange;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.no-records {
+    width: 250px;
+}
+
+
+.centered-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+a {
+    cursor: pointer;
+}
+
+.btn_Buttons {
+    background: blue;
+    border: none;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* 
+@media (max-width: 1200px) {
+    .arrow_Container {
+        display: flex;
+        padding-left: 17%;
+    }
+  } */

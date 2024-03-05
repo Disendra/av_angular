@@ -30,6 +30,17 @@ body {
     display: flex;
 }
 
+.input-box {
+    position: relative;
+  }
+  
+  .input-box i {
+    position: absolute;
+    right: 13px;
+    top: 15px;
+    color: #ced4da;
+  
+  }
 
 .input-group {
     position: relative;
@@ -156,16 +167,30 @@ footer {
     cursor: pointer;
 }
 
-
+.spinner {
+  margin-left: 25%;
+}
 
 .center-content {
-    margin-top: 8%;
+    margin-top: 4%;
     margin-left: 24%;
     width: 75%;
 }
 
-@media only screen and (max-width: 1366px) and (min-width: 1100px) {
+/* @media only screen and (max-width: 1366px) and (min-width: 1100px) {
     .email {
         margin-left: 25%;
     }
-}
+} */
+
+
+@media (min-width: 1024px) {
+    .header-boxs {
+        /* margin-left: 25%;
+        max-width: 975px;  */
+     margin-left: 24%;
+     width: 75%
+    }
+  }
+  
+  

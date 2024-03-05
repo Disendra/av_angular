@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core'
-import { Route, Router } from '@angular/router'
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core'
+import { ActivatedRoute, Route, Router } from '@angular/router'
 import { FaServiceService } from '../services/fa-service.service'
+import { AuthServiceService } from '../services/auth-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,8 +21,16 @@ export class LoginPageComponent implements OnInit {
   isSignup: boolean = false;
   showSpinner: boolean = false;
   loginRepsonse: any
+  receivedValue: any;
 
-  constructor (private router: Router, private faService: FaServiceService) {}
+  @ViewChild('myDialog') myDialog!: TemplateRef<any>
+  errorMsg: any;
+  constructor (private router: Router, private faService: FaServiceService,private dialog: MatDialog,private route: ActivatedRoute, private authService: AuthServiceService,private popup:PopupService) {
+    this.route.params.subscribe(params => {
+      this.receivedValue = params['value'];
+      // Do something with receivedValue
+    });
+  }
 
   ngOnInit (): void {
   }
@@ -36,32 +47,35 @@ export class LoginPageComponent implements OnInit {
   onSubmit(emailId: string, password: string) {
     this.showSpinner = true;
 
-if(emailId === 'abc@gmail.com' && password === '1234') {
-  this.router.navigate(['/admin-page']);
+    if (emailId === 'abc@gmail.com' && password === '1234') {
+        this.router.navigate(['/admin-page']);
+    } else {
+        this.faService.login(emailId, password).subscribe(
+            (response: any) => {
+                console.log('Response from server:', response);
+                if (response.status) {
+                    this.authService.saveLoggedInEmail(emailId);
+                    if (this.receivedValue === 'Dashboard') {
+                        this.router.navigate(['/avEngineer-dashboard']);
+                    } else {
+                        this.router.navigate(['/ekart-page']);
+                    }
+                }
+            },
+            (error: any) => {
+                if (error && error.message && error.error && error.error.message) {
+                    this.errorMsg = error.error.message;
+                } else {
+                    console.error('Error:', error);
+                    this.errorMsg = 'An error occurred. Please try again later.';
+                }
+                this.popup.openDialogWithTemplateRef(this.myDialog);
+            }
+        ).add(() => {
+            this.showSpinner = false;
+        });
+    }
 }
-else {
-    this.faService.login(emailId, password).subscribe(
-      (response: any) => {
-        console.log('Response from server:', response);
-        if (response.status) {
-          this.router.navigate(['/avEngineer-dashboard']);
-        }
-      },
-      (error: any) => {
-        if (error && error.message && error.error.message) {
-          alert(error.error.message);
-        } else {
-          console.error('Error:', error);
-          alert('An error occurred. Please try again later.');
-        }
-      }
-    ).add(() => {
-      this.showSpinner = false;
-    });
-  }
-
-}
-  
 
   onSignUp(emailId: string, password: string, role: any,reEnteredPswd:any) {
     this.invalidMsg = ''; // Resetting error message
@@ -86,7 +100,7 @@ else {
     if (!isValid) {
       return;
     }
-  
+
     this.showSpinner = true;
     this.faService.createUser(emailId, password, role).subscribe(
       (response: any) => {
@@ -94,7 +108,12 @@ else {
         if (response && response.status) { // Adjusted to check for 'status' instead of 'success'
           this.invalidMsg = '';
           alert(response.message);
-          this.router.navigate(['/avEngineer-dashboard']);
+          if(this.receivedValue === 'Dashboard') {
+            this.router.navigate(['/avEngineer-dashboard']);
+            }
+            else {
+            this.router.navigate(['/ekart-page']);
+            }
         } else {
           alert(response.message || 'An error occurred. Please try again later.');
         }
@@ -118,6 +137,5 @@ else {
   isValidPassword(password: string): boolean {
     return password.length >= 8;
   }
-  
-    
+   
 }

@@ -13,7 +13,10 @@ export class AvDirectoryComponent implements OnInit {
   clickedUserData: any[] = []
   pageSize: number = 10
   searchBox: boolean = true
+  companyName: string = 'Av Tech LTD'
   showClickedData: boolean = false
+  showFilters: boolean = true
+  showSpinner: boolean = false
   pageSizeOptions: number[] = [5, 10, 25, 100] // You can adjust these options
   filterTerm: string = '' // Add filter term
   @ViewChild(MatPaginator) paginator!: MatPaginator
@@ -30,11 +33,13 @@ export class AvDirectoryComponent implements OnInit {
   }
 
   getData () {
+    this.showSpinner = true
     this.faService.getUserDetails().subscribe((response: any) => {
       console.log('Response from server:', response)
       this.userData = response.records
       this.applyFilter() // Apply filter when data is fetched
       this.updatePageData()
+      this.showSpinner = false
     })
   }
 
@@ -56,6 +61,12 @@ export class AvDirectoryComponent implements OnInit {
         item.emailId.toLowerCase().includes(this.filterTerm.toLowerCase()) ||
         item.role.toLowerCase().includes(this.filterTerm.toLowerCase())
     )
+    // Check if pagedUserData is empty
+    if (this.pagedUserData.length === 0) {
+      this.showFilters = false
+    } else {
+      this.showFilters = true
+    }
   }
 
   showDetails (item: any) {

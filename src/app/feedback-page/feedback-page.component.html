@@ -6,18 +6,18 @@
 
   <body>
   <ng-template class="popup" #firstDialog>
-       <div class="container">
+       <div class="container" style="width: 285px">
         <div class="feedback">
           <div class="rating">
-            <input type="radio" name="rating" id="rating-5">
+            <input type="radio" name="rating" id="rating-5"  (click)="displaySelectedRating(5)">
             <label for="rating-5"></label>
-            <input type="radio" name="rating" id="rating-4">
+            <input type="radio" name="rating" id="rating-4" (click)="displaySelectedRating(4)">
             <label for="rating-4"></label>
-            <input type="radio" name="rating" id="rating-3">
+            <input type="radio" name="rating" id="rating-3" (click)="displaySelectedRating(3)">
             <label for="rating-3"></label>
-            <input type="radio" name="rating" id="rating-2">
+            <input type="radio" name="rating" id="rating-2" (click)="displaySelectedRating(2)">
             <label for="rating-2"></label>
-            <input type="radio" name="rating" id="rating-1">
+            <input type="radio" name="rating" id="rating-1" (click)="displaySelectedRating(1)">
             <label for="rating-1"></label>
             <div class="emoji-wrapper">
               <div class="emoji">
@@ -108,6 +108,8 @@
             </div>
           </div>
         </div>
+        <textarea [(ngModel)]="message"></textarea>
+        <button type="submit" class="btn btn-primary btn_Buttons" (click)=onSubmit()>Submit</button> 
       </div>
   </ng-template>
 

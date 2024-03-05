@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FaServiceService } from '../services/fa-service.service'
 import Chart from 'chart.js/auto';
+import { UserServicesService } from '../services/user-services.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -16,6 +17,8 @@ export class AdminPageComponent {
   showSpinner: boolean = false
   userData: any[] = []
 
+  constructor (private faService: FaServiceService,private userService:UserServicesService) { }
+
  data = [{labels: 'red'}]
   counts: any;
   labels: any;
@@ -27,40 +30,100 @@ export class AdminPageComponent {
       this.counts = response.records.map((record: { role_count: any; }) => record.role_count);
       this.createChart();
     });
+
+   this.userService.getFeedBackData().subscribe((response:any) => {
+    console.log('Response from server:', response)
+    this.labels = response.records.map((record: { rating: any; }) => record.rating);
+    this.counts = response.records.map((record: { count: any; }) => record.count);
+    this.createRatingChart();
+   })
+
+
   }
 
   createChart(): void {
     const myChart = new Chart("myChart", {
+        type: 'pie',
+        data: {
+            labels: this.labels,
+            datasets: [{
+                label: 'Counts',
+                data: this.counts,
+                backgroundColor: [
+                    'red',
+                    'pink',
+                    'green',
+                    'yellow',
+                    'orange',
+                    'blue'
+                ],
+                hoverOffset: 3
+            }]
+        },
+        options: {
+            aspectRatio: 2,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.label || '';
+                            var value = context.parsed || 0;
+                            var total = context.dataset.data.reduce((acc, curr) => acc + curr, 0);
+                            var percentage = parseFloat((value / total * 100).toFixed(2));
+                            return `${label}: ${value} (${percentage}%)`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+createRatingChart(): void {
+  let labelsWithStars = this.labels.map((label: string) => label + ' Stars');
+  const myChart = new Chart("myRatingChart", {    
       type: 'pie',
       data: {
-        labels: this.labels,
-        datasets: [{
-          label: 'Counts',
-          data:  this.counts,
-          backgroundColor: [
-            'red',
-            'pink',
-            'green',
-            'yellow',
-            'orange',
-            'blue'
-          ],
-          hoverOffset: 4
-        }]
+          labels: labelsWithStars,
+          datasets: [{
+              label: 'Counts',
+              data: this.counts,
+              backgroundColor: [
+                  'black',
+                  'blue',
+                  'Red',
+                  'lightgrey',
+                  'green'
+              ],
+              hoverOffset: 3
+          }]
       },
       options: {
-        aspectRatio: 3.5
+          aspectRatio: 2,
+          plugins: {
+              tooltip: {
+                  callbacks: {
+                      label: function(context) {
+                          var label = context.label || '';
+                          var value = context.parsed || 0;
+                          var total = context.dataset.data.reduce((acc, curr) => acc + curr, 0);
+                          var percentage = parseFloat((value / total * 100).toFixed(2));
+                          return `${label}: ${value} (${percentage}%)`;
+                      }
+                  }
+              }
+          }
       }
-    });
-  }
-
-
-  constructor (private faService: FaServiceService) { }
+  });
+}
 
   items = [
     { name: 'User Info', dataKey: 'userData' },
     { name: 'Login Info', dataKey: 'loginInfo' },
-    { name: "Today's Login", dataKey: 'todayInfo' }
+    { name: "Today's Login", dataKey: 'todayInfo' },
+    { name: "FeedBack", dataKey: 'feedBack'}
   ];
 
 
@@ -91,8 +154,10 @@ export class AdminPageComponent {
       this.faService.downloadLoginDataExcel()
     } else if(option === 'loginInfo') {
       this.faService.downloadLoginInfoExcel()
-    } else {
+    } else if(option === 'todayInfo') {
       this.faService.downloadTodayLoginInfoExcel();
+    } else if(option === 'feedBack') {
+      this.faService.downloadFeedBackExcel();
     }
   }
 

@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core'
 })
 export class FaServiceService {
   // url = 'https://av-node.onrender.com'
+  // url = 'https://av-nodejs.onrender.com';
   url = 'http://localhost:3000';
+
 
   constructor (private http: HttpClient) {}
 
@@ -59,6 +61,10 @@ downloadLoginInfoExcel(): void {
 
 downloadTodayLoginInfoExcel(): void {
   this.downloadExcel(`${this.url}/downloadTodayLogin`, 'userData.xlsx');
+}
+
+downloadFeedBackExcel(): void {
+  this.downloadExcel(`${this.url}/downloadFeedback`, 'userData.xlsx');
 }
 
 }

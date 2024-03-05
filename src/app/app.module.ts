@@ -39,11 +39,13 @@ import { AvDirectoryComponent } from './av-enginner/av-directory/av-directory.co
 import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { SpinnerComponent } from './spinner/spinner.component';
 import {MatIconModule} from '@angular/material/icon';
 import { FeedComponent } from './feed/feed.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { MatButtonModule } from '@angular/material/button';
+import { EkartComponent } from './ekart/ekart.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { MatButtonModule } from '@angular/material/button';
     FeedbackPageComponent,
     SpinnerComponent,
     FeedComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    EkartComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatInputModule,
     MatExpansionModule,
+    MatTooltipModule,
     MatIconModule,
     MatPaginatorModule,
     QRCodeModule,

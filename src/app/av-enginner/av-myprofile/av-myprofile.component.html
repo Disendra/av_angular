@@ -1,5 +1,5 @@
   <!-- ======= Contact Section ======= -->
-  <section id="contact"  class="contact">
+  <section id="contact" style="display: none;" class="contact">
 
     <div class="container" data-aos="fade-up">
   
@@ -10,17 +10,15 @@
       <div class="row gy-4">
   
         <div class="col-lg-12">
-          <form action="forms/contact.php" method="post" class="php-email-form">
+          <form method="post" class="php-email-form">
             <div class="row gy-4">
-  
-              
-  
+    
               <div class="col-md-12 profile-textarea">
                 <label>Profile Headline</label>
                 <textarea class="form-control" name="message" rows="3" placeholder="Message" required></textarea>
               </div>
   
-  
+              <div class="section-1">
            <label class="mb-0">Personal Details</label>
               <div class="row">
                  <div class="col-md-4">
@@ -32,7 +30,7 @@
               <div class="col-md-4">
                 <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
               </div>
-                </div>
+                
                 <div class="row mt-2">
                   <div class="col-md-4">
                  <input type="email" class="form-control" name="firstName" placeholder="Email Id" required>
@@ -49,9 +47,11 @@
               </select>
              </div>
            </div>
+  </div>
+              </div>
   
   
-  
+              <div class="section-1">
            <label class="mb-0">Educational Details(Highest)</label>
            <div class="row">
               <div class="col-md-4">
@@ -64,7 +64,7 @@
              <input type="text" class="form-control" name="lastName" placeholder="Year" required>
            </div>
              </div>
-  
+      </div>
   
   
              <label class="mb-0">Experience(Latest)</label>
@@ -230,3 +230,169 @@
     </div>
   
   </section><!-- End Contact Section -->
+
+
+
+
+
+
+
+
+  
+  <section id="contact" class="container">
+    <div class="container-xl px-4 mt-4">
+      <div class="row">
+        <div class="col-xl-12">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            <div class="card-header">Profile Info</div>
+            <div class="card-body">
+              <form>
+                <!-- Profile Headline -->
+                <div class="p_headline">
+                  <div class="mb-3">
+                    <h4>Profile Headline</h4>
+                    <textarea class="form-control" type="text" value="username"></textarea>
+                  </div>
+                </div>
+                <!-- Personal Details -->
+                <div class="p_details">
+                  <div class="row gx-3 mb-3">
+                    <h4>Personal Details</h4>
+                    <div class="col-md-4">
+                      <input class="form-control" id="inputFirstName" placeholder="First Name" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" placeholder="Middle Name" id="inputLastName" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" id="inputLastName" placeholder="Last name" type="text">
+                    </div>
+                  </div>
+                  <div class="row gx-3 mb-3">
+                    <div class="col-md-4">
+                      <input class="form-control" id="inputFirstName" placeholder="Email Id" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" id="inputLastName" placeholder="Mobile Number" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <!-- <input class="form-control" placeholder="Gender" type="text"> -->
+                      <select class="form-control" name="gender">
+                        <option value="" selected disabled>Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    </div>
+                  </div>
+                </div>
+                <!-- Educational Details -->
+                <div class="p_headline">
+                  <div class="row gx-3 mb-3">
+                    <h4>Educational Details(Highest)</h4>
+                    <div class="col-md-5">
+                      <input class="form-control" placeholder="University/Institute" type="text">
+                    </div>
+                    <div class="col-md-5">
+                      <input class="form-control" placeholder="Degree" type="text">
+                    </div>
+                    <div class="col-md-2">
+                      <input class="form-control" placeholder="Year" type="text">
+                    </div>
+                  </div>
+                </div>
+                <!-- Experience Details -->
+                <div class="p_headline">
+                  <div class="row gx-3 mb-3">
+                    <h4>Experience(Latest)</h4>
+                    <div class="col-md-4">
+                      <input class="form-control" placeholder="Job Title" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" placeholder="Company Name" type="text">
+                    </div>
+                    <div class="col-md-4">
+                      <input class="form-control" placeholder="Location" type="text">
+                    </div>
+                  </div>
+                  <div class="row gx-3 mb-3">
+                    <div class="col-md-4">
+                      <select class="form-control" name="role" required>
+                        <option *ngFor="let item of empType" [value]="item.value">
+                            {{ item.label }}
+                        </option>
+                    </select>  
+                    </div>
+
+                    <div class="col-md-4">
+                      <input class="form-control" matTooltip="Start Date" type="date">
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <!-- <input class="form-control" placeholder="Total Experience" type="text"> -->
+                      <select class="form-control" name="role" required>
+                        <option value="" disabled selected>Total Experience</option>
+                        <option *ngFor="let number of numbers" [value]="number">
+                          {{ number }}
+                        </option>
+                    </select>  
+                    </div>
+                  </div>
+                </div>
+                <!-- Address Details -->
+                <div class="p_headline">
+                  <div class="row gx-3 mb-3">
+                    <h4>Address</h4>
+                    <div class="col-md-6">
+                      <textarea class="form-control" placeholder="Address" rows="5" type="text"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row gx-3">
+                        <div class="col-md-6">
+                          <!-- <input class="form-control" placeholder="Country" type="text"> -->
+                          <select #country name="country" class="form-control" id="country" (change)="onCountryChange($event)">
+                            <option [value]="null">Select Your Country</option>
+                            <option *ngFor="let country of countries" [value]="country | json">
+                                {{ country.name }}
+                            </option>
+                        </select>
+                        </div>
+                        <div class="col-md-6">
+                          <!-- <input class="form-control" placeholder="State"  type="text"> -->
+                          <select #state name="state" id="state" class="form-control form-dropdown border" name="role" (change)="onStateChange($event)">
+                            <option [value]="null">Select Your State</option>
+                            <option *ngFor="let state of states" [value]="state | json">
+                                {{ state.name }}
+                            </option>
+                        </select>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                          <!-- <input class="form-control" placeholder="City" type="text"> -->
+                          <select #city name="city" id="city" class="form-control" (change)="onCityChange($event)">
+                            <option [value]="null">Select Your City</option>
+                            <option *ngFor="let city of cities" [value]="city | json">
+                                {{ city.name }}
+                            </option>
+                        </select>
+                        </div>
+                        <div class="col-md-6 mt-2 text-center">
+                          <input class="form-control" placeholder="Pin Code" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Save changes button-->
+                <div class="d-flex justify-content-center">
+                  <button class="btn btn-primary">Save</button>
+                </div> 
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  

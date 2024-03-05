@@ -10,13 +10,28 @@
 <body>
 
 
+  <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="chart-container">
+                <div class="pie_box">
+                    <h1>Roles</h1>
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-container">
+                <div class="pie_box">
+                    <h1>Rating</h1>
+                    <canvas id="myRatingChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <div class="chart-container">
-    <div class="pie_box">
-      <h1>Profiles Information</h1>
-    <canvas id="myChart"></canvas>
-  </div>
-  </div>
+  
   
 
   
@@ -56,8 +71,8 @@
       </div>
 
       
-      <div class="row gy-4 user_Info">
-        <div *ngFor="let item of items" class="col-lg-3 col-md-4">
+      <div class="row gy-4 user_Info ml-0">
+        <div *ngFor="let item of items" class="col-lg-3 col-md-3">
           <div class="count-box">
             <div style="text-align: center;">
               <img src="assets/img/download.png" (click)="downloadData(item.dataKey)" class="img-fluid custom-images" alt="">
